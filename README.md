@@ -567,7 +567,7 @@ main()
 }
 ```
 _______________________________________________________________________________________________________________
-__13.Title: LCD Data Display with CGRAM and Multiple Formats Using AT89S52__
+__13.Title: LCD 16*2 Data Display with CGRAM and Multiple Formats Using AT89S52__
 
 _Objective:_ To demonstrate the use of 16x2 alphanumeric LCD by displaying various data formats—characters, strings, unsigned/signed integers, float, hexadecimal, octal, binary—and custom characters using CGRAM.
 
@@ -1399,4 +1399,79 @@ lcddata('/');P1=0xF7;delay(10000);
 }
 ```
 ____________________________________________________________________________________________________________________________________________
+__20.Title: LCD 20*4 Data Display with CGRAM and Multiple Formats Using AT89S52__
 
+_Objective:_ To demonstrate the use of 16x2 alphanumeric LCD by displaying various data formats—characters, strings, unsigned/signed integers, float, hexadecimal, octal, binary—and custom characters using CGRAM.
+
+__Hardware Connection:__
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 (LCD Data Lines) → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → 10k potentiometer center pin (contrast control)
+ - 10k potentiometer ends → VDD and GND
+ - LCD backlight LED+ → +5V through 220Ω resistor
+ - LCD backlight LED− → GND
+
+__Software Simulation:__
+
+![Screenshot 2025-06-04 174537](https://github.com/user-attachments/assets/1ecd1fe4-33cc-4a9a-96bd-dbdca218e14d)
+
+![Screenshot 2025-06-04 174520](https://github.com/user-attachments/assets/c7462099-4bb6-4a5b-8d95-e11f3c71f230)
+
+
+__Hardware Simulation:__
+
+__Code:__
+```
+#include "lcd.h"
+#include "lcd_defines.h"
+#include "delay.h"
+
+u8 cgramLUT[8] = {
+    0x07,   
+    0x04,   
+    0x04,   
+    0x1F,  
+    0x10,   
+    0x10,   
+    0x10,  
+    0x00    
+};
+
+void main() {
+    InitLCD();                        
+    delay_ms(20);
+    
+	BuildCGRAM(cgramLUT, 0);          
+    CmdLCD(CLEAR_LCD);
+    CharLCD('A');                  	
+   	StrLCD(" V24HE6G2 ");                
+	  delay_ms(2000);  
+    
+	  CmdLCD(GOTO_LINE2_POS0);        
+    U32LCD(1234567890);             
+    delay_ms(2000);                   
+
+    CmdLCD(GOTO_LINE3_POS0);
+    S32LCD(-1234567890);              
+    CmdLCD(GOTO_LINE4_POS0);
+    F32LCD(123.456789, 6);           
+    delay_ms(2000);
+
+    CmdLCD(CLEAR_LCD);
+    HexLCD(256);                    
+    CmdLCD(GOTO_LINE2_POS0);
+    OctLCD(65);                       
+    delay_ms(1000);
+
+    CmdLCD(GOTO_LINE3_POS0);
+    BinLCD(127, 16);                 
+    CmdLCD(GOTO_LINE4_POS0);
+    CharLCD(0);                      
+    while (1);                     
+}
+```
+__________________________________________________________________________________________________________________________
