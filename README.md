@@ -496,17 +496,16 @@ __12.Title: LCD Data Display with CGRAM and Multiple Formats Using AT89S52__
 _Objective:_ To demonstrate the use of 16x2 alphanumeric LCD by displaying various data formats—characters, strings, unsigned/signed integers, float, hexadecimal, octal, binary—and custom characters using CGRAM.
 
 __Hardware Connection:__
- - Microcontroller used: AT89S52
- - LCD type: 16x2 alphanumeric, HD44780 compatible
- - LCD data lines D0–D7 connected to Port P0 (for 8-bit mode)
- - Control lines:
-	 - RS → P2.0
-	 - RW → P2.1
-	 - EN → P2.2
-	 - VSS → GND
-	 - VDD → +5V
-	 - VEE → 10K potentiometer (for contrast control)
- - Power supply: Regulated 5V DC
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 (LCD Data Lines) → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → 10k potentiometer center pin (contrast control)
+ - 10k potentiometer ends → VDD and GND
+ - LCD backlight LED+ → +5V through 220Ω resistor
+ - LCD backlight LED− → GND
 
 __Software Simulation:__
 
@@ -568,19 +567,16 @@ __13. Title: Alphabet Display with ASCII Values on LCD Using AT89S52__
 _Objective:_ To display uppercase alphabets (A–Z) on a 16x2 LCD along with their corresponding ASCII values in both decimal and hexadecimal formats, using the AT89S52 microcontroller.
 
 __Hardware Connection:__
- - Microcontroller: AT89S52
- - LCD Type: 16x2 Alphanumeric LCD (HD44780 compatible)
- - LCD Mode: 8-bit
- - LCD Data Lines (D0–D7): Connected to Port P0
- - LCD Control Lines:
-	 - RS: P2.0
-	 - RW: P2.1
-	 - EN: P2.2
- - VSS: GND
- - VDD: +5V
- - VEE: Contrast via 10K potentiometer
- - Backlight: +5V through current-limiting resistor
- - Power Supply: Regulated 5V DC
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 (LCD Data Lines) → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → 10k potentiometer center pin (contrast control)
+ - 10k potentiometer ends → VDD and GND
+ - LCD backlight LED+ → +5V through 220Ω resistor
+ - LCD backlight LED− → GND
 
 __Software Simulation:__
 
@@ -619,20 +615,16 @@ __14. Title: Electronic Dice Simulation on LCD Using AT89S52__
 _Objective:_ To simulate a 6-faced electronic dice using the AT89S52 microcontroller. When a push-button is pressed, a pseudo-random number between 1 and 6 is generated and displayed on a 16x2 LCD.
 
 __Hardware Connection:__
- - Microcontroller: AT89S52
- - LCD Type: 16x2 Alphanumeric LCD (HD44780 compatible)
- - LCD Mode: 8-bit
- - LCD Data Lines (D0–D7): Connected to Port P0
- - LCD Control Lines:
-	 - RS: Connected to P2.0
-	 - RW: Connected to P2.1
-	 - EN: Connected to P2.2
- - Switch (ROLL_SW): Connected to P3.2 (active low, pulled-up with 10KΩ resistor)
- - VSS: GND
- - VDD: +5V
- - VEE: Contrast via 10K potentiometer
- - Backlight: +5V through current-limiting resistor
- - Power Supply: Regulated 5V DC
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 (LCD Data Lines) → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → 10k potentiometer center pin (contrast control)
+ - 10k potentiometer ends → VDD and GND
+ - LCD backlight LED+ → +5V through 220Ω resistor
+ - LCD backlight LED− → GND
 
 __Software Simulation:__
 
@@ -679,5 +671,644 @@ void main() {
 }
 ```
 _______________________________________________________________________________________________________________
+__15. Title: Oscillating Message Display on 16x2 LCD Using AT89S52__
+
+_Objective:_ To continuously scroll a static message ("GOPAL") from left to right and then right to left on a 16x2 character LCD using an 8051 microcontroller (AT89S52), demonstrating cursor positioning, command/data handling, and LCD timing control.
+
+__Hardware Connection:__
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 (LCD Data Lines) → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → 10k potentiometer center pin (contrast control)
+ - 10k potentiometer ends → VDD and GND
+ - LCD backlight LED+ → +5V through 220Ω resistor
+ - LCD backlight LED− → GND
+
+__Software Simulation:__
+
+__Hardware Simulation:__
+
+__Code:__
+```
+#include <reg51.h>
+#include "lcd.h"
+#include "lcd_defines.h"
+#include "delay.h"
+#include "types.h"
+
+s8 msg[] = "GOPAL";
+
+void main() {
+    s32 i;
+    InitLCD();
+    delay_ms(20); 
+    while (1) {
+        for (i = 0; i <= (16 - 5); i++)
+	{ 
+            CmdLCD(0x80 + i);              
+            StrLCD(msg);      
+            delay_ms(100);
+            CmdLCD(CLEAR_LCD);         
+        }
+
+        // Right to Left Scroll
+        for (i = (16 - 5 - 1); i >= 0; i--) {
+            CmdLCD(0x80 + i);             
+            StrLCD(msg);
+            delay_ms(100);
+            CmdLCD(CLEAR_LCD);
+        }
+    }
+}
+```
+________________________________________________________________________________________________________________
+__16. Title: Fastest Finger First Timer Display on LCD Using AT89S52__
+
+_Objective:_ To implement a reflex timer system using a 16x2 LCD and two switches on an AT89S52 microcontroller. The system begins timing when a trigger switch is pressed and stops when a stop switch is activated, displaying the elapsed time (seconds.milliseconds) on the LCD.
+
+__Hardware Connection:__
+LCD Connections:
+ - RS → P2.0
+ - RW → P2.1
+ - EN → P2.2
+ - D0–D7 → P1.0 to P1.7
+ - VSS → GND
+ - VDD → +5V
+ - VEE → Center of 10k Potentiometer (for contrast)
+ - Potentiometer ends → VDD and GND
+ - LCD Backlight + → +5V through 220Ω resistor
+ - LCD Backlight − → GND
+
+Switch Inputs (Active LOW):
+ - Trigger Switch → P3.2
+ - Stop Switch → P3.3
+ - Common Ground: All GND pins (LCD, switches, MCU) must be connected together
+
+__Software Simuatuion:__
+
+__Hardware Simulation:__
+
+__Code:__
+```
+// fastest_finger_first_lcd.c
+#include <reg51.h>
+#include "lcd.h"
+#include "lcd_defines.h"
+#include "delay.h"
+#include "types.h"
+
+sbit TRIG_SW_AL = P3^2;   
+sbit STOP_SW_AL = P3^3;   
+
+void disp_time(u32 sec, u32 millisec){
+    CmdLCD(GOTO_LINE2_POS0); 
+    U32LCD(sec);           
+    CharLCD('.');            
+    U32LCD(millisec);        
+}
+
+void main(){
+    u32 millisec = 0, sec = 0;
+    u8 flag = 0;
+
+    InitLCD();
+    delay_ms(20);
+    StrLCD("Fast Finger 15+");
+
+    while(1){
+        disp_time(sec, millisec);
+
+        if(TRIG_SW_AL == 0) {
+            flag = 1;
+
+            while(TRIG_SW_AL == 0)
+                disp_time(sec, millisec);
+
+            while(flag == 1) {
+                for (sec = 0; sec < 10; sec++) {
+                    if (STOP_SW_AL == 0) {
+                        flag = 2;
+                        while (STOP_SW_AL == 0)
+                            disp_time(sec, millisec);
+                        break;
+                    }
+
+                    for(millisec = 0; millisec < 10; millisec++) {
+                        delay_ms(100); // Simulate time
+                        disp_time(sec, millisec);
+
+                        if(STOP_SW_AL == 0) {
+                            flag = 2;
+                            while (STOP_SW_AL == 0)
+                                disp_time(sec, millisec);
+                            break;
+                        }
+                    }
+
+                    if(flag == 2) break;
+                }
+
+                if(flag == 2) flag = 0;  // Reset for next round
+            }
+
+            sec = 0;
+            millisec = 0;
+        }
+    }
+}
+```
+_________________________________________________________________________________________________________________________________________________________
+__17. Title: 4x3 Matrix Keypad Interface with 16x2 LCD on AT89S52__
+
+_Objective:_ To interface a 4x3 matrix keypad with an AT89S52 microcontroller and display the pressed key on a 16x2 character LCD. When the program starts, a welcome message is displayed, and then the system continuously scans the keypad to display numeric keypresses.
+
+__Hardware Connection:__
+LCD (16x2) Interface with AT89S52:
+ - LCD RS → P3.7
+ - LCD RW → P3.5
+ - LCD EN → P3.6
+ - LCD D0–D7 (Data Bus) → Port 2 (0xA0 or P2.0 to P2.7)
+ - LCD VSS → GND
+ - LCD VDD → +5V
+ - LCD VEE → Wiper of 10k potentiometer (contrast)
+ - LCD Backlight + → +5V via 220Ω resistor
+ - LCD Backlight − → GND
+
+Keypad (4x3 Matrix) Interface with AT89S52:
+ - Row 0 (R0) → P1.0
+ - Row 1 (R1) → P1.1
+ - Row 2 (R2) → P1.2
+ - Row 3 (R3) → P1.3
+ - Column 0 (C0) → P1.4
+ - Column 1 (C1) → P1.5
+ - Column 2 (C2) → P1.6
+ - Column 3 (C3) → Not Used in 4x3 keypad
+
+__Software Simulation:__
 
 
+__Hardware Simuation:__
+
+
+__Code:__
+```
+#include<reg51.h>
+void keypad();
+void cmd(char c);
+void delay(int num);
+void lcdinit();
+void lcddata(char c);
+sfr dataport=0xA0;    
+    
+sbit r0=P1^0;sbit r1=P1^1;
+sbit r2=P1^2;sbit r3=P1^3;
+sbit c0=P1^4;sbit c1=P1^5;
+sbit c2=P1^6;sbit c3=P1^7;
+sbit rs=P3^7;sbit rw=P3^5;
+sbit en=P3^6;
+
+                                   
+int main(){
+int count=0;
+//Display string on 16x2 lcd Row-1
+char st[]={"PLEASE ENTER     NUMBER "};
+lcdinit();                         
+
+while(st[count]!='\0')
+{
+lcddata(st[count]);
+if(count==16)
+cmd(0xC0);
+count++;
+}
+
+delay(100000);  
+
+cmd(0x01);  
+cmd(0x80);  
+
+while(1)     
+{
+keypad();
+}
+}
+                                    
+void lcddata(char c)
+{
+dataport=c;
+rw=0;                
+rs=1;               
+en=1;
+delay(50);       
+en=0;
+delay(50);
+}
+                                 
+void cmd(char c){
+dataport=c;
+rw=0;        
+rs=0;       
+en=1;
+delay(50);     
+en=0;
+delay(50);
+}
+void delay(int num){
+unsigned int i,j;
+for(i=0;i< num;i++)
+for(j=0;j<5;j++);
+}
+                                   
+void lcdinit(){
+delay(15000);cmd(0x30);
+delay(4500); cmd(0x30);
+delay(300);  cmd(0x30);
+delay(600);  cmd(0x38);
+cmd(0x0F);   cmd(0x01);
+cmd(0x06);   cmd(0x80);
+dataport=0x00;
+P1=0xFF;
+P3=0x00;
+}
+                                          
+void keypad(){
+unsigned char c='t';
+while(c!='E'){
+// Row 0: 1 2 3
+r0=0; r1=1; r2=1; r3=1;
+if(c0==0 && r0==0){ lcddata('1'); delay(10000); while(c0==0); }
+if(c1==0 && r0==0){ lcddata('2'); delay(10000); while(c1==0); }
+if(c2==0 && r0==0){ lcddata('3'); delay(10000); while(c2==0); }
+P1=0xFF;
+
+// Row 1: 4 5 6
+r0=1; r1=0; r2=1; r3=1;
+if(c0==0 && r1==0){ lcddata('4'); delay(10000); while(c0==0); }
+if(c1==0 && r1==0){ lcddata('5'); delay(10000); while(c1==0); }
+if(c2==0 && r1==0){ lcddata('6'); delay(10000); while(c2==0); }
+P1=0xFF;
+
+// Row 2: 7 8 9
+r0=1; r1=1; r2=0; r3=1;
+if(c0==0 && r2==0){ lcddata('7'); delay(10000); while(c0==0); }
+if(c1==0 && r2==0){ lcddata('8'); delay(10000); while(c1==0); }
+if(c2==0 && r2==0){ lcddata('9'); delay(10000); while(c2==0); }
+P1=0xFF;
+
+// Row 3: * 0 #
+r0=1; r1=1; r2=1; r3=0;
+if(c1==0 && r3==0){ lcddata('0'); delay(10000); while(c1==0); }
+P1=0xFF;
+
+c='E';
+}
+}
+```
+_______________________________________________________________________________________________________________________________________
+__18. Title: Name Entry System Using 4x4 Keypad and 16x2 LCD on AT89C51__
+
+_Objective:_ To develop an embedded system that allows a user to enter alphanumeric characters using a 4x4 matrix keypad, and displays the input in real-time on a 16x2 LCD. This mimics the functionality of a traditional mobile keypad (multi-key tap) for character selection.
+
+Key Functionalities:
+ - LCD displays an initial message prompting for name input.
+ - Each key press on the keypad displays corresponding letters/numbers/symbols.
+ - Multi-press logic allows cycling through characters mapped to each key.
+ - Real-time character display with cursor control on LCD.
+
+__Hardware Connections:__
+Microcontroller:
+ - AT89C51 / AT89S52 (8051-based MCU)
+
+16x2 LCD (Connected to Port 2):\
+LCD Pin	       Description	            Connection
+- D0–D7 	Data lines	Port 2 (P2.0–P2.7)
+- RS	      Register Select	P3.7
+- RW	         Read/Write	P3.5
+- EN              Enable	P3.6
+- VSS	           GND		GND
+- VDD	           +5V		+5V
+- VEE	    Contrast Control	10k Pot to GND
+
+4x4 Matrix Keypad (Connected to Port 1):
+Row\ 
+  Pin	Connection	Description
+ - R0	P1.0	Row 0
+ - R1	P1.1	Row 1
+ - R2	P1.2	Row 2
+ - R3	P1.3	Row 3
+
+Column\ 
+   Pin	Connection Description
+ - C0	P1.4	Column 0
+ - C1	P1.5	Column 1
+ - C2	P1.6	Column 2
+ - C3	P1.7	Column 3
+
+Power Supply:
+ - +5V regulated power supply for microcontroller, LCD, and keypad.
+
+__Software Simulation:__
+
+__Hardware Simulation:__
+
+__Code:__
+```
+#include<reg51.h>
+void keypad();
+void cmd(char c);
+void delay(int num);
+void lcdinit();
+void lcddata(char c);
+sfr dataport=0xA0;        //16x2 lcd connected to port-2
+
+sbit r0=P1^0;sbit r1=P1^1;
+sbit r2=P1^2;sbit r3=P1^3;//Keypad rows and coulombs
+sbit c0=P1^4;sbit c1=P1^5;
+sbit c2=P1^6;sbit c3=P1^7;
+sbit rs=P3^7;sbit rw=P3^5;
+sbit en=P3^6;
+
+                                   //MAIN FUNCTION
+int main(){
+int count=0;
+//Display string on 16x2 lcd Row-1
+char st[]={"PLEASE ENTER YOUR NAME "};
+lcdinit();                         //Initialize 16x2 lcd
+
+while(st[count]!='\0') //Display st[] string on 16x2 lcd
+{
+lcddata(st[count]);
+if(count==16)
+cmd(0xC0);
+count++;
+}
+
+delay(100000);  //Delay st[] string will remain on lcd for some time
+
+cmd(0x01);   //Clear Lcd - st[] string will vanish
+cmd(0x80);   //Put string on first row of Lcd
+
+while(1)     //Check for keystrokes 
+{
+keypad();
+}
+}
+                                    //DATA FUNCTION
+void lcddata(char c)
+{
+dataport=c;
+rw=0;                
+rs=1;               
+en=1;
+delay(50);       
+en=0;
+delay(50);
+}
+                                   //COMMAND FUNCTION
+void cmd(char c){
+dataport=c;
+rw=0;        
+rs=0;       
+en=1;
+delay(50);     
+en=0;
+delay(50);
+}
+void delay(int num){
+unsigned int i,j;
+for(i=0;i< num;i++)
+for(j=0;j<5;j++);
+}
+                                   //LCD INITIALIZATION
+void lcdinit(){
+delay(15000);cmd(0x30);
+delay(4500); cmd(0x30);
+delay(300);  cmd(0x30);
+delay(600);  cmd(0x38);
+cmd(0x0F);   cmd(0x01);
+cmd(0x06);   cmd(0x80);
+dataport=0x00;
+P1=0xFF;
+P3=0x00;
+}
+                                          //IDENTIFYING KEYSTROKE
+void keypad(){
+unsigned char c='t';
+while(c!='E'){
+             
+//Scan first row and coulomb, coulomb will be static and all row buttons will be scanned 
+//command 0x10 moves the cursor one step back
+
+                        
+r0=0;r1=1;r2=1;r3=1;                   //a,b,c,1
+if(c0==0 && r0==0){
+lcddata('a');P1=0xFE;delay(10000);
+     if(c0==0 && r0==0){	 
+     cmd(0x10); lcddata('b');P1=0xFE;delay(10000);
+     if(c0==0 && r0==0){
+     cmd(0x10); lcddata('c');P1=0xFE;delay(10000);
+     if(c0==0 && r0==0){
+     cmd(0x10); lcddata('1');P1=0XFE;delay(10000);
+                                                  }
+                                  }
+                       }
+  P1=0xFF; 
+                  }
+r0=0;r1=1;r2=1;r3=1;	              //d,e,f,2
+if(c1==0 && r0==0){
+lcddata('d');P1=0xFE;delay(10000);
+     if(c1==0 && r0==0){
+     cmd(0x10); lcddata('e');P1=0xFE;delay(10000);
+     if(c1==0 && r0==0){
+     cmd(0x10); lcddata('f');P1=0xFE;delay(10000);
+     if(c1==0 && r0==0){
+     cmd(0x10); lcddata('2');P1=0xFE;delay(10000);
+                                                  }
+                                    }
+                       } 
+   P1=0xFF;
+                  }
+                                      //g,h,i,3
+r0=0;r1=1;r2=1;r3=1;
+if(c2==0 && r0==0){
+lcddata('g');P1=0xFE;delay(10000);
+     if(c2==0 && r0==0){
+     cmd(0x10); lcddata('h');P1=0xFE;delay(10000);
+     if(c2==0 && r0==0){
+     cmd(0x10); lcddata('i');P1=0xFE;delay(10000);
+     if(c2==0 && r0==0){
+     cmd(0x10); lcddata('3');P1=0xFE;delay(10000);
+                                                  }
+                                    }
+                       }	
+   P1=0xFF;
+                  }
+                                       //j,k,l,4
+r0=0;r1=1;r2=1;r3=1;
+if(c3==0 && r0==0){
+lcddata('j');P1=0xFE;delay(10000);
+     if(c3==0 && r0==0){
+     cmd(0x10); lcddata('k');P1=0xFE;delay(10000);
+     if(c3==0 && r0==0){
+     cmd(0x10); lcddata('l');P1=0xFE;delay(10000);
+     if(c3==0 && r0==0){
+     cmd(0x10); lcddata('4');P1=0xFE;delay(10000);
+                                                  }
+                                    }
+                       }	
+    P1=0xFF;
+                  }
+                                       //m,n,o,5
+r0=1;r1=0;r2=1;r3=1;
+if(c0==0 && r1==0){
+lcddata('m');P1=0xFD;delay(10000);
+     if(c0==0 && r1==0){
+     cmd(0x10); lcddata('n');P1=0xFD;delay(10000);
+     if(c0==0 && r1==0){
+     cmd(0x10); lcddata('o');P1=0xFD;delay(10000);
+     if(c0==0 && r1==0){
+     cmd(0x10); lcddata('5');P1=0xFD;delay(10000);
+                                                  }
+                                    }
+                       }	
+    P1=0xFF;
+                  }
+                                       //p,q,r,6
+ r0=1;r1=0;r2=1;r3=1;
+if(c1==0 && r1==0){
+lcddata('m');P1=0xFD;delay(10000);
+     if(c1==0 && r1==0){
+     cmd(0x10); lcddata('n');P1=0xFD;delay(10000);
+     if(c1==0 && r1==0){
+     cmd(0x10); lcddata('o');P1=0xFD;delay(10000);
+     if(c1==0 && r1==0){
+     cmd(0x10); lcddata('5');P1=0xFD;delay(10000);
+                                                  }
+                                    }
+                       }	
+    P1=0xFF;
+                  }
+                                        //s,t,u,7
+r0=1;r1=0;r2=1;r3=1;
+if(c2==0 && r1==0){
+lcddata('s');P1=0xFD;delay(10000);
+     if(c2==0 && r1==0){
+     cmd(0x10); lcddata('t');P1=0xFD;delay(10000);
+     if(c2==0 && r1==0){
+     cmd(0x10); lcddata('u');P1=0xFD;delay(10000);
+     if(c2==0 && r1==0){
+     cmd(0x10); lcddata('7');P1=0xFD;delay(10000);
+                                                  }
+                                    }
+                       }	
+     P1=0xFF;
+                  }
+                                        //v,w,x,8
+r0=1;r1=0;r2=1;r3=1;
+if(c3==0 && r1==0){
+lcddata('v');P1=0xFD;delay(10000);
+     if(c3==0 && r1==0){
+     cmd(0x10); lcddata('w');P1=0xFD;delay(10000);
+     if(c3==0 && r1==0){
+     cmd(0x10); lcddata('x');P1=0xFD;delay(10000);
+     if(c3==0 && r1==0){
+     cmd(0x10); lcddata('8');P1=0xFD;delay(10000);
+                                                  }
+                                    }
+                       }	 
+      P1=0xFF;
+                  }
+                                         //y,z,9
+r0=1;r1=1;r2=0;r3=1;
+if(c0==0 && r2==0){
+lcddata('y');P1=0xFB;delay(10000);
+     if(c0==0 && r2==0){
+     cmd(0x10); lcddata('z');P1=0xFB;delay(10000);
+     if(c0==0 && r2==0){
+     cmd(0x10); lcddata('9');P1=0xFB;delay(10000);
+                                    }
+                       }	 
+      P1=0xFF;
+                  }
+                                        //0,-,>
+r0=1;r1=1;r2=0;r3=1;
+if(c1==0 && r2==0){
+lcddata('0');P1=0xFB;delay(10000);
+     if(c1==0 && r2==0){
+     cmd(0x10); lcddata('-');P1=0xFB;delay(10000);
+     if(c1==0 && r2==0){
+     cmd(0x10); lcddata('>');P1=0xFB;delay(10000);
+                                    }
+                       }	
+       P1=0xFF;
+                  }
+                                       //!,@,#
+r0=1;r1=1;r2=0;r3=1;
+if(c2==0 && r2==0){
+lcddata('!');P1=0xFB;delay(10000);
+     if(c2==0 && r2==0){
+     cmd(0x10); lcddata('@');P1=0xFB;delay(10000);
+     if(c2==0 && r2==0){
+     cmd(0x10); lcddata('#');P1=0xFB;delay(10000); 
+                                    }
+                       }	
+        P1=0xFF;
+                  }
+                                       //$,%,^
+r0=1;r1=1;r2=0;r3=1;
+if(c3==0 && r2==0){
+lcddata('$');P1=0xFB;delay(10000);
+     if(c3==0 && r2==0){
+     cmd(0x10); lcddata('%');P1=0xFB;delay(10000);
+     if(c3==0 && r2==0){
+     cmd(0x10); lcddata('^');P1=0xFB;delay(10000);
+   
+                                    }
+                       }	 
+        P1=0xFF;
+                  }
+                                        //&,*
+r0=1;r1=1;r2=1;r3=0;
+if(c0==0 && r3==0){
+lcddata('&');P1=0xF7;delay(10000);
+     if(c0==0 && r3==0){
+     cmd(0x10); lcddata('*');P1=0xF7;delay(10000);
+                       }	
+         P1=0xFF;
+                  }
+                                        //(,)
+r0=1;r1=1;r2=1;r3=0;
+if(c1==0 && r3==0){
+lcddata('(');P1=0xF7;delay(10000);
+     if(c1==0 && r3==0){
+     cmd(0x10); lcddata(')');P1=0xF7;delay(10000);
+                       }	
+         P1=0xFF;
+                  }
+                                        //-,+
+r0=1;r1=1;r2=1;r3=0;
+if(c2==0 && r3==0){
+lcddata('-');P1=0xF7;delay(10000);
+     if(c2==0 && r3==0){
+     cmd(0x10); lcddata('+');P1=0xF7;delay(10000);
+                       }
+      P1=0xFF;
+                  }
+                                        ///,*
+r0=1;r1=1;r2=1;r3=0;
+if(c3==0 && r3==0){
+lcddata('/');P1=0xF7;delay(10000);
+     if(c3==0 && r3==0){
+     cmd(0x10); lcddata('*');P1=0xF7;delay(10000);
+                       }	
+       P1=0xFF;
+                  }
+ c='E';
+ }
+}
+```
+____________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________
