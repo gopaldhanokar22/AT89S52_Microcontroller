@@ -13,7 +13,10 @@ __Hardware Connection:__
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/1ffae2bc-d220-4d94-a222-3bbf385a764e)
+
 __Hardware Simulation:__
+
 
 __code:__
 ```
@@ -56,6 +59,7 @@ Component	Connection Detail
 
 __Software simulation:__
 
+![image](https://github.com/user-attachments/assets/bbc1f86d-8192-46db-b0b2-5bb2e50e38b8)
 
 __Hardware Simulation:__
 
@@ -106,6 +110,7 @@ Component	Connection Detail
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/3ad72640-7900-4cd2-bdac-3d226c0e2443)
 
 __Hardware Simulation:__
 
@@ -150,6 +155,8 @@ Component	             Connection
 - Reset Circuit	10kΩ resistor + 10µF capacitor
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/d5e5848d-0434-4a44-91d3-f11d5cf569f5)
 
 __Hardware Simulation:__
 
@@ -201,9 +208,11 @@ Component Connection Description
 - Crystal 11.0592 MHz + 2 × 33pF capacitors
 - Reset Circuit	10kΩ resistor + 10µF capacitor
 
-__Hardware Simulation:__
-
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/240e1162-0cf4-4bd0-8b41-47a056391d18)
+
+__Hardware Simulation:__
 
 __Code:__
 ```
@@ -243,10 +252,12 @@ Component Connection Description
  - Crystal Oscillator 11.0592 MHz + 2 × 33pF capacitors
  - Reset Circuit 10kΩ resistor + 10µF capacitor
 
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/a46de680-f382-4ca4-bd07-f8f6e8553a0d)
+
 __Hardware Simulation:__
 
-
-__Software Simulation:__
 
 __Code:__
 ```
@@ -300,6 +311,8 @@ Component	Connection Description
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/79c27f79-5775-4d24-9c00-fe411439036b)
+
 __Hardware Simulation:__
 
 __Code:__
@@ -328,8 +341,65 @@ void main(void)
 }
 ```
 ___________________________________________________________________________________________________________________________
+__8. Title:Single Digit Up Counter using Common Anode 7-Segment Display with AT89S52__
 
-__8.Title: Digital Clock Simulation on 7-Segment Display Using AT89S52__
+_Objective:_ To display digits from 0 to 9 in a loop on a single-digit common anode 7-segment display using an AT89S52 microcontroller. The counter updates every second.
+
+__Hardware Requirements:__
+Microcontroller: AT89S52
+7-Segment Display: Common Anode type
+Resistors: 330Ω – 1kΩ (for current limiting on segment pins)
+Power Supply: 5V regulated
+Crystal Oscillator: 11.0592 MHz (with two 33pF capacitors)
+Miscellaneous: Breadboard, jumper wires, etc.
+
+__Hardware Connections:__
+7-Segment Display to Port P1 (Data Bus):\
+7-Segment Pin	Segment	Connects To	Remarks\
+a	Segment A	P1.0	Through 330Ω\
+b	Segment B	P1.1	Through 330Ω\
+c	Segment C	P1.2	Through 330Ω\
+d	Segment D	P1.3	Through 330Ω\
+e	Segment E	P1.4	Through 330Ω\
+f	Segment F	P1.5	Through 330Ω\
+g	Segment G	P1.6	Through 330Ω\
+dp	Decimal	P1.7 or GND	Not used here\
+Common Anode Pins	Vcc (5V)	5V	Both anode pins to Vcc
+
+Ensure current-limiting resistors between segment pins and microcontroller.
+
+Microcontroller:\
+Pin	Function	Remarks\
+P1.0–P1.6	Segment data lines	Connect to segments a–g\
+P3.x (optional)	DIG1–DIG4 selection	Not used here, only single digit\
+Vcc	+5V	Power supply\
+GND	Ground	Common ground\
+XTAL1, XTAL2	Crystal Oscillator	11.0592 MHz with caps\
+
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/84ce61fc-712d-4453-82dc-2bbad63cd7ec)
+
+__Hardware Simulation:__
+
+__code:__
+```
+#include <reg51.h>
+#include "delay.h"
+#include "segment.h"
+
+void main() {
+    u8 i;
+    while(1) {
+        for(i = 0; i <= 9; i++) {
+            segment_display(i);
+            delay_ms(1000);
+        }
+    }
+}
+```
+________________________________________________________________________________________________________________
+__9.Title: Digital Clock Simulation on 7-Segment Display Using AT89S52__
 
 _Objective:_ To simulate a digital clock (MM:SS format) using 4-digit multiplexed 7-segment display on AT89S52 by displaying minutes and seconds with real-time updates.
 
@@ -350,6 +420,7 @@ __Hardware Connection:__
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/2513160f-d619-48b2-b4f2-d62b5645e778)
 
 __Hardware Simulatuion:__
 
@@ -378,7 +449,7 @@ main()
 }
 ```
 __________________________________________________________________________________________________________
-__9.Title: Static 4-Digit Number Display Using AT89S52 and 7-Segment Display__
+__10.Title: Static 4-Digit Number Display Using AT89S52 and 7-Segment Display__
 
 _Objective:_ To display two static 4-digit numbers alternately (1264 and 8745) on a 4-digit 7-segment multiplexed display using AT89S52.
 
@@ -396,6 +467,7 @@ __Hardware Connection:__
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/b581dc48-5b74-4ed2-a699-b86cbc282cd2)
 
 __Hardware Simulation:__
 
@@ -417,7 +489,7 @@ main()
 }
 ```
 ________________________________________________________________________________________________________________
-__10.Title: Floating Point Number Display on 4-Digit 7-Segment Using AT89S52__
+__11.Title: Floating Point Number Display on 4-Digit 7-Segment Using AT89S52__
 
 _Objective:_ To display floating point numbers (1.245, 43.89, 678.7) alternately using 4-digit multiplexed 7-segment display with AT89S52.
 
@@ -435,6 +507,8 @@ __Hardware Connection:__
  - Power supply: +5V DC regulated
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/d63c507e-900b-4f54-8651-e0fef2d8ee90)
 
 __Hardware Simulation:__
 
@@ -460,7 +534,7 @@ main()
 }
 ```
 _____________________________________________________________________________________________________________
-__11.Title: Scrolling Message Display on 4-Digit 7-Segment Using AT89S52__
+__12.Title: Scrolling Message Display on 4-Digit 7-Segment Using AT89S52__
 
 _Objective:_ To scroll the word "HELP" across a 4-digit 7-segment multiplexed display using AT89S52.
 
@@ -475,6 +549,8 @@ __Hardware Connection:__
  - Display type: Common Anode 7-Segment Displays
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/5b0440a0-4014-4cf8-b04b-f0209c6df8b8)
 
 __Hardware Simulation:__
 
@@ -491,7 +567,7 @@ main()
 }
 ```
 _______________________________________________________________________________________________________________
-__12.Title: LCD Data Display with CGRAM and Multiple Formats Using AT89S52__
+__13.Title: LCD Data Display with CGRAM and Multiple Formats Using AT89S52__
 
 _Objective:_ To demonstrate the use of 16x2 alphanumeric LCD by displaying various data formats—characters, strings, unsigned/signed integers, float, hexadecimal, octal, binary—and custom characters using CGRAM.
 
@@ -508,6 +584,8 @@ __Hardware Connection:__
  - LCD backlight LED− → GND
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/f956f16c-d757-4529-bf78-3a5706eced93)
 
 __Hardware Simulation:__
 
@@ -562,7 +640,7 @@ void main() {
 }
 ```
 ____________________________________________________________________________________________________________
-__13. Title: Alphabet Display with ASCII Values on LCD Using AT89S52__
+__14. Title: Alphabet Display with ASCII Values on LCD Using AT89S52__
 
 _Objective:_ To display uppercase alphabets (A–Z) on a 16x2 LCD along with their corresponding ASCII values in both decimal and hexadecimal formats, using the AT89S52 microcontroller.
 
@@ -580,6 +658,7 @@ __Hardware Connection:__
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/25357598-6c18-41ac-a184-7f6a679810eb)
 
 __Hardware Simulation:__
 
@@ -610,7 +689,7 @@ void main() {
 }
 ```
 _________________________________________________________________________________________________________________
-__14. Title: Electronic Dice Simulation on LCD Using AT89S52__
+__15. Title: Electronic Dice Simulation on LCD Using AT89S52__
 
 _Objective:_ To simulate a 6-faced electronic dice using the AT89S52 microcontroller. When a push-button is pressed, a pseudo-random number between 1 and 6 is generated and displayed on a 16x2 LCD.
 
@@ -627,6 +706,8 @@ __Hardware Connection:__
  - LCD backlight LED− → GND
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/e2049737-056b-463d-a5f5-7f6575307c81)
 
 __Hardware Simuation:__
 
@@ -671,7 +752,7 @@ void main() {
 }
 ```
 _______________________________________________________________________________________________________________
-__15. Title: Oscillating Message Display on 16x2 LCD Using AT89S52__
+__16. Title: Oscillating Message Display on 16x2 LCD Using AT89S52__
 
 _Objective:_ To continuously scroll a static message ("GOPAL") from left to right and then right to left on a 16x2 character LCD using an 8051 microcontroller (AT89S52), demonstrating cursor positioning, command/data handling, and LCD timing control.
 
@@ -688,6 +769,8 @@ __Hardware Connection:__
  - LCD backlight LED− → GND
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/969ea4a4-d746-4424-aeb1-ede04791f22f)
 
 __Hardware Simulation:__
 
@@ -725,7 +808,7 @@ void main() {
 }
 ```
 ________________________________________________________________________________________________________________
-__16. Title: Fastest Finger First Timer Display on LCD Using AT89S52__
+__17. Title: Fastest Finger First Timer Display on LCD Using AT89S52__
 
 _Objective:_ To implement a reflex timer system using a 16x2 LCD and two switches on an AT89S52 microcontroller. The system begins timing when a trigger switch is pressed and stops when a stop switch is activated, displaying the elapsed time (seconds.milliseconds) on the LCD.
 
@@ -748,6 +831,8 @@ Switch Inputs (Active LOW):
  - Common Ground: All GND pins (LCD, switches, MCU) must be connected together
 
 __Software Simuatuion:__
+
+![image](https://github.com/user-attachments/assets/275c035a-cf26-41b5-8c1c-2be478a57214)
 
 __Hardware Simulation:__
 
@@ -821,7 +906,7 @@ void main(){
 }
 ```
 _________________________________________________________________________________________________________________________________________________________
-__17. Title: 4x3 Matrix Keypad Interface with 16x2 LCD on AT89S52__
+__18. Title: 4x3 Matrix Keypad Interface with 16x2 LCD on AT89S52__
 
 _Objective:_ To interface a 4x3 matrix keypad with an AT89S52 microcontroller and display the pressed key on a 16x2 character LCD. When the program starts, a welcome message is displayed, and then the system continuously scans the keypad to display numeric keypresses.
 
@@ -849,6 +934,7 @@ Keypad (4x3 Matrix) Interface with AT89S52:
 
 __Software Simulation:__
 
+![image](https://github.com/user-attachments/assets/679e56fd-62ab-449b-9860-b5a947b5e856)
 
 __Hardware Simuation:__
 
@@ -968,7 +1054,7 @@ c='E';
 }
 ```
 _______________________________________________________________________________________________________________________________________
-__18. Title: Name Entry System Using 4x4 Keypad and 16x2 LCD on AT89C51__
+__19. Title: Name Entry System Using 4x4 Keypad and 16x2 LCD on AT89C51__
 
 _Objective:_ To develop an embedded system that allows a user to enter alphanumeric characters using a 4x4 matrix keypad, and displays the input in real-time on a 16x2 LCD. This mimics the functionality of a traditional mobile keypad (multi-key tap) for character selection.
 
@@ -1011,6 +1097,8 @@ Power Supply:
  - +5V regulated power supply for microcontroller, LCD, and keypad.
 
 __Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/db0fe7a4-8238-4a3d-a784-2bb1d7d837bf)
 
 __Hardware Simulation:__
 
@@ -1311,4 +1399,4 @@ lcddata('/');P1=0xF7;delay(10000);
 }
 ```
 ____________________________________________________________________________________________________________________________________________
-_______________________________________________________________________________________________________________________________
+
