@@ -1,5 +1,29 @@
 # AT89S52_Microcontroller
 
+
+## INDEX
+1. Title: LED Blinking using AT89C51 Microcontroller
+2. Title: Traffic Light Signal Simulation using AT89S52 Microcontroller
+3. Title: Running LED Pattern Display using AT89S52 Microcontroller
+4. Title: Random Dice Value Display on LEDs using AT89S52 Microcontroller
+5. Title: Switch-Controlled LED Using AT89S52 Microcontroller
+6. Title: Dual Switch-Controlled LED Using AT89S52 Microcontroller
+7. Title: 4 Switches Controlling 4 LEDs Using AT89S52 Microcontroller
+8. Title: Single Digit Up Counter using Common Anode 7-Segment Display with AT89S52
+9. Title: Digital Clock Simulation on 7-Segment Display Using AT89S52
+10. Title: Static 4-Digit Number Display Using AT89S52 and 7-Segment Display
+11. Title: Floating Point Number Display on 4-Digit 7-Segment Using AT89S52
+12. Title: Scrolling Message Display on 4-Digit 7-Segment Using AT89S52
+13. Title: LCD 16*2 Data Display with CGRAM and Multiple Formats Using AT89S52
+14. Title: Alphabet Display with ASCII Values on LCD Using AT89S52
+15. Title: Electronic Dice Simulation on LCD Using AT89S52
+16. Title: Oscillating Message Display on 16x2 LCD Using AT89S52
+17. Title: Fastest Finger First Timer Display on LCD Using AT89S52
+18. Title: 4x3 Matrix Keypad Interface with 16x2 LCD on AT89S52
+19. Title: Name Entry System Using 4x4 Keypad and 16x2 LCD on AT89C51
+20. Title: LCD 20*4 Data Display with CGRAM and Multiple Formats Using AT89S52
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 __1. Title: LED Blinking using AT89C51 Microcontroller__
 
 _Objective:_ To interface an LED with the AT89C51 microcontroller and create a basic embedded application that continuously toggles the LED state (ON/OFF) with a 1-second delay, demonstrating GPIO control and delay implementation using nested loops.
