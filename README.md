@@ -41,6 +41,10 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![WhatsApp Image 2025-06-12 at 23 15 24_cf193dcc](https://github.com/user-attachments/assets/f2232657-d82c-4c6e-a870-109d01b193ad)
+
+![WhatsApp Image 2025-06-12 at 23 15 25_830fc9ca](https://github.com/user-attachments/assets/77c44f7d-ff26-48fc-bea7-dd98ca4c5d19)
+
 
 __code:__
 ```
@@ -86,6 +90,14 @@ __Software simulation:__
 ![image](https://github.com/user-attachments/assets/bbc1f86d-8192-46db-b0b2-5bb2e50e38b8)
 
 __Hardware Simulation:__
+
+![WhatsApp Image 2025-06-12 at 23 16 29_cd1ac0a0](https://github.com/user-attachments/assets/726c15c0-c47a-4aaa-80a4-850040246631)
+
+![WhatsApp Image 2025-06-12 at 23 16 28_76ffa8c0](https://github.com/user-attachments/assets/efd4d704-6461-4d02-b6eb-a5d9e7a4fd4f)
+
+![WhatsApp Image 2025-06-12 at 23 16 28_53e88ce0](https://github.com/user-attachments/assets/2573e8ee-83b2-4cbb-868b-a1cf2153b54e)
+
+![WhatsApp Image 2025-06-12 at 23 16 28_8acdf19f](https://github.com/user-attachments/assets/29dd3a8d-6855-4dd1-b7fc-2f5531c035d0)
 
 
 __code:__
@@ -138,6 +150,13 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![WhatsApp Image 2025-06-12 at 23 18 22_075816db](https://github.com/user-attachments/assets/117bb831-9d72-4937-b17a-a8869643c0df)
+
+![WhatsApp Image 2025-06-12 at 23 18 22_541856d2](https://github.com/user-attachments/assets/28eadc8a-2ba2-4841-93fa-1c8b9867a643)
+
+![WhatsApp Image 2025-06-12 at 23 18 23_e26c1e72](https://github.com/user-attachments/assets/275569d8-fb54-4d3c-a3cb-5fa736626fbf)
+
+
 __Code:__
 ```
 #include <reg51.h>
@@ -183,6 +202,13 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/d5e5848d-0434-4a44-91d3-f11d5cf569f5)
 
 __Hardware Simulation:__
+
+![Screenshot 2025-06-12 232143](https://github.com/user-attachments/assets/7b0616b5-cb60-45ec-a405-38ba59c9f04b)
+
+![Screenshot 2025-06-12 232203](https://github.com/user-attachments/assets/0d32ff5a-e97b-41e7-a00a-dcd1535406f6)
+
+![Screenshot 2025-06-12 232219](https://github.com/user-attachments/assets/fae6bbbe-a572-4d00-bc81-cf385bb2fe27)
+
 
 __code:__
 ```
@@ -238,6 +264,11 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![WhatsApp Image 2025-06-12 at 23 20 15_d4004a4d](https://github.com/user-attachments/assets/d2603936-5108-4ef8-bb0e-abdf01202923)
+
+![WhatsApp Image 2025-06-12 at 23 20 16_c3dc15d4](https://github.com/user-attachments/assets/7e744362-5ed1-4437-b6b8-a7879aba61e1)
+
+
 __Code:__
 ```
 #include <reg51.h>
@@ -281,6 +312,12 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/a46de680-f382-4ca4-bd07-f8f6e8553a0d)
 
 __Hardware Simulation:__
+
+![WhatsApp Image 2025-06-12 at 23 24 17_3a0ce9bc](https://github.com/user-attachments/assets/0c834b92-c3aa-40bf-92a2-cc263cd23b59)
+
+![WhatsApp Image 2025-06-12 at 23 24 17_ffe858e4](https://github.com/user-attachments/assets/f209733f-304d-496c-ba33-13e5e53261d9)
+
+![WhatsApp Image 2025-06-12 at 23 24 18_41787b4f](https://github.com/user-attachments/assets/e9b766d9-d1f2-4795-aa67-f36444a4d000)
 
 
 __Code:__
@@ -338,6 +375,17 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/79c27f79-5775-4d24-9c00-fe411439036b)
 
 __Hardware Simulation:__
+
+![WhatsApp Image 2025-06-12 at 23 26 06_d7101942](https://github.com/user-attachments/assets/62458dad-6c93-4b66-bbe5-4f4bd770eba1)
+
+![WhatsApp Image 2025-06-12 at 23 26 06_d4f92be4](https://github.com/user-attachments/assets/d8963152-e92e-4175-9e01-71ff5ecd2cd0)
+
+![WhatsApp Image 2025-06-12 at 23 26 06_706c8bf7](https://github.com/user-attachments/assets/4dffc96c-b5f1-48ce-bab6-55b45c0ad823)
+
+![WhatsApp Image 2025-06-12 at 23 26 07_abc343c7](https://github.com/user-attachments/assets/5515c075-abd0-4cef-afe8-ce023d81d114)
+
+![WhatsApp Image 2025-06-12 at 23 26 07_c3e31635](https://github.com/user-attachments/assets/93f6ea7c-0f60-4914-9a62-660b197f9464)
+
 
 __Code:__
 ```
@@ -406,6 +454,13 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![WhatsApp Image 2025-06-12 at 23 27 25_6afa0393](https://github.com/user-attachments/assets/4c4feef3-ae33-4a17-85d4-7a72baec524c)
+
+![image](https://github.com/user-attachments/assets/947cfb4a-7f00-47a2-9b78-26987d3462cb)
+
+![image](https://github.com/user-attachments/assets/e11edfb0-1bbe-4c93-a8bc-db64f6180b7d)
+
+
 __code:__
 ```
 #include <reg51.h>
@@ -445,9 +500,6 @@ __Hardware Connection:__
 __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/2513160f-d619-48b2-b4f2-d62b5645e778)
-
-__Hardware Simulatuion:__
-
 
 __Code:__
 ```
@@ -493,7 +545,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/b581dc48-5b74-4ed2-a699-b86cbc282cd2)
 
-__Hardware Simulation:__
 
 __Code:__
 ```
@@ -534,8 +585,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/d63c507e-900b-4f54-8651-e0fef2d8ee90)
 
-__Hardware Simulation:__
-
 __Code:__
 ```
 #include<reg52.h>
@@ -575,8 +624,6 @@ __Hardware Connection:__
 __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/5b0440a0-4014-4cf8-b04b-f0209c6df8b8)
-
-__Hardware Simulation:__
 
 __Code:__
 ```
