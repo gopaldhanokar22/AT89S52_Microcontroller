@@ -1,5 +1,6 @@
 # AT89S52_Microcontroller
 
+![Blue and White Modern Professional General Linkedin Banner (2)](https://github.com/user-attachments/assets/c184da18-e828-448e-9ca6-62fd5b4cffda)
 
 ## INDEX
 1. Title: LED Blinking using AT89C51 Microcontroller
