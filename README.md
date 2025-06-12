@@ -660,6 +660,12 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![Screenshot 2025-06-12 233850](https://github.com/user-attachments/assets/00ae165e-4aff-4e41-b554-d0e409244863)
+
+![Screenshot 2025-06-12 233914](https://github.com/user-attachments/assets/2154254c-75a7-4079-9e0e-38384f747c0a)
+
+![Screenshot 2025-06-12 233921](https://github.com/user-attachments/assets/af3eff8a-5c50-4d68-837a-3ed255bcdd23)
+
 __Code:__
 ```
 #include "lcd.h"
@@ -733,6 +739,10 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![Screenshot 2025-06-12 234054](https://github.com/user-attachments/assets/e1254459-705f-4af7-a03e-3646d0ce8309)
+
+![image](https://github.com/user-attachments/assets/07d93a9c-1b5b-4095-afce-7feb4865b1c8)
+
 __Code:__
 ```
 #include "lcd.h"
@@ -781,6 +791,10 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/e2049737-056b-463d-a5f5-7f6575307c81)
 
 __Hardware Simuation:__
+
+![Screenshot 2025-06-12 234224](https://github.com/user-attachments/assets/db78959f-3a96-42c4-b6fd-03576acd2b6d)
+
+![image](https://github.com/user-attachments/assets/310a70e5-84ab-4623-a36f-290404fa19fb)
 
 __Code:__
 ```
@@ -845,6 +859,10 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![Screenshot 2025-06-12 234344](https://github.com/user-attachments/assets/421fc979-668e-4f1e-90f4-2aa5722fe6d1)
+
+![Screenshot 2025-06-12 234403](https://github.com/user-attachments/assets/79a5dbf6-4854-4b71-9516-b1266533bdfe)
+
 __Code:__
 ```
 #include <reg51.h>
@@ -906,6 +924,11 @@ __Software Simuatuion:__
 ![image](https://github.com/user-attachments/assets/275c035a-cf26-41b5-8c1c-2be478a57214)
 
 __Hardware Simulation:__
+
+![Screenshot 2025-06-12 234508](https://github.com/user-attachments/assets/146b394e-4d6a-432e-bb18-e353767cbc65)
+
+![image](https://github.com/user-attachments/assets/2fcd2034-0b08-484c-a2a9-1fddf99aa41c)
+
 
 __Code:__
 ```
@@ -1008,6 +1031,10 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/679e56fd-62ab-449b-9860-b5a947b5e856)
 
 __Hardware Simuation:__
+
+![image](https://github.com/user-attachments/assets/96578290-c1bc-460f-a296-62c2d78d1823)
+
+![image](https://github.com/user-attachments/assets/51f3d4b2-b263-465a-94f4-3d4fd3e691f7)
 
 
 __Code:__
@@ -1172,6 +1199,11 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/db0fe7a4-8238-4a3d-a784-2bb1d7d837bf)
 
 __Hardware Simulation:__
+
+![Screenshot 2025-06-12 234716](https://github.com/user-attachments/assets/2549b056-fd71-4a3e-8f5a-f2f9afc331bd)
+
+![Screenshot 2025-06-12 235429](https://github.com/user-attachments/assets/656b338a-852a-479b-82ad-243ce68e1f09)
+
 
 __Code:__
 ```
@@ -1488,12 +1520,13 @@ __Hardware Connection:__
 
 __Software Simulation:__
 
-![Screenshot 2025-06-04 174537](https://github.com/user-attachments/assets/1ecd1fe4-33cc-4a9a-96bd-dbdca218e14d)
-
-![Screenshot 2025-06-04 174520](https://github.com/user-attachments/assets/c7462099-4bb6-4a5b-8d95-e11f3c71f230)
-
+![image](https://github.com/user-attachments/assets/866ed9e4-a2b5-4b39-aa82-802a0d366aba)
 
 __Hardware Simulation:__
+
+![Screenshot 2025-06-12 233518](https://github.com/user-attachments/assets/3e1362d2-d95c-487f-9b47-57ea343776e3)
+
+![Screenshot 2025-06-12 233534](https://github.com/user-attachments/assets/6062b240-0706-4139-a9d5-6e46f03e776a)
 
 __Code:__
 ```
